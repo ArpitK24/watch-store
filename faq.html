@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs - Dan's Watch Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        /* FAQ Styles */
+        .faq-section {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+
+        .faq-header {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Accordion Styles */
+        .card {
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+            border-radius: 8px 8px 0 0;
+            padding: 1rem;
+        }
+
+        .card-header:hover {
+            background-color: #0056b3;
+        }
+
+        .card-body {
+            background-color: #fff;
+            padding: 20px;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Arrow icon rotation */
+        .faq-icon {
+            float: right;
+            transition: transform 0.3s;
+        }
+
+        .collapsed .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Design */
+        .container {
+            max-width: 700px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a href="/" class="navbar-brand font-weight-bold">
+                <img src="./images/logo1.png" alt="Logo" style="width: 50px; height: auto;"> Dan's Watch Store
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="shop.html" class="nav-link">Shop</a></li>
+                    <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h1 class="text-center faq-header">Frequently Asked Questions</h1>
+            <div id="faqAccordion" class="accordion">
+                <!-- FAQ Item 1 -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link text-white collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                What is your return policy?
+                            </button>
+                        </h5>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            You can return any item within 30 days of purchase for a full refund.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" id="headingTwo">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link text-white collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Do you offer warranty on your watches?
+                            </button>
+                        </h5>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Yes, all watches come with a 2-year warranty against defects.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" id="headingThree">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link text-white collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                How can I track my order?
+                            </button>
+                        </h5>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Once your order is shipped, you will receive a tracking link via email.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center" id="headingFour">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link text-white collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Do you ship internationally?
+                            </button>
+                        </h5>
+                        <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#faqAccordion">
+                        <div class="card-body">
+                            Yes, we ship to select countries worldwide. Check our shipping policy for more details.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

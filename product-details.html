@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Dan's Watch Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Styles */
+        .product-gallery { margin-top: 20px; }
+        .product-img-large { max-width: 100%; border-radius: 5px; transition: transform 0.3s; }
+        .product-img-large:hover { transform: scale(1.05); }
+        .product-thumbnails img { max-width: 80px; cursor: pointer; margin: 5px; }
+        .product-thumbnails img:hover { border: 2px solid #007bff; }
+        .product-info { margin-top: 30px; }
+        .product-price { font-size: 1.5rem; color: #ff5733; }
+        .product-description { margin-top: 20px; line-height: 1.7; }
+        .btn-add-to-cart { background-color: #007bff; color: #fff; }
+        .btn-add-to-cart:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <!-- Product Details Section -->
+    <section class="product-details py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Product Images -->
+                <div class="col-md-6">
+                    <div class="product-gallery">
+                        <img src="" id="mainImage" alt="Product Image" class="product-img-large mb-4">
+                        <div class="product-thumbnails d-flex justify-content-center" id="thumbnails">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Information -->
+                <div class="col-md-6 product-info">
+                    <h2 id="productTitle">Product Title</h2>
+                    <p class="product-price" id="productPrice">$0.00</p>
+                    <p class="product-description" id="productDescription">Product description here...</p>
+                    <button type="button" class="btn btn-add-to-cart btn-block mt-3" id="addToCartBtn">
+                        <i class="fas fa-shopping-cart"></i> Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript for Dynamic Content Loading -->
+    <script>
+        // Sample Data for Products
+        const products = {
+            watch1: {
+                title: "Classic Elegance",
+                price: "$199.99",
+                description: "A timeless watch for those who appreciate the classics.",
+                images: ["./images/watch1.jpg"]
+            },
+            watch2: {
+                title: "Modern Style",
+                price: "$249.99",
+                description: "A sleek, modern watch perfect for the contemporary individual.",
+                images: ["./images/watch2.jpg"]
+            },
+            watch3: {
+                title: "Sleek Black",
+                price: "$299.99",
+                description: "A stylish black watch that adds sophistication to any outfit.",
+                images: ["./images/watch3.jpg"]
+            },
+            watch4: {
+                title: "Luxury Gold",
+                price: "$399.99",
+                description: "A luxurious gold watch that is the epitome of elegance.",
+                images: ["./images/watch4.jpg"]
+            },
+            watch5: {
+                title: "Vintage Charm",
+                price: "$219.99",
+                description: "A vintage-inspired watch that brings back timeless style.",
+                images: ["./images/watch5.jpg"]
+            },
+            watch6: {
+                title: "Ocean Blue",
+                price: "$279.99",
+                description: "An ocean blue watch that captures the essence of the sea.",
+                images: ["./images/watch6.jpg"]
+            },
+            watch7: {
+                title: "Elegant Silver",
+                price: "$319.99",
+                description: "A sleek silver watch that complements both casual and formal attire.",
+                images: ["./images/watch7.jpg"]
+            },
+            watch8: {
+                title: "Urban Minimalist",
+                price: "$189.99",
+                description: "A minimalist watch designed for the urban lifestyle.",
+                images: ["./images/watch8.jpg"]
+            },
+            watch9: {
+                title: "Classic Leather",
+                price: "$259.99",
+                description: "A classic leather strap watch that combines durability with style.",
+                images: ["./images/watch9.jpg"]
+            },
+            watch10: {
+                title: "Nightfall Black",
+                price: "$349.99",
+                description: "A stunning black watch perfect for evening wear.",
+                images: ["./images/watch10.jpg"]
+            },
+            watch11: {
+                title: "Sporty Blue",
+                price: "$239.99",
+                description: "A sporty blue watch for the active individual.",
+                images: ["./images/watch11.jpg"]
+            },
+            watch12: {
+                title: "Golden Hour",
+                price: "$399.99",
+                description: "A captivating watch that reflects the beauty of the golden hour.",
+                images: ["./images/watch12.jpg"]
+            },
+            watch13: {
+                title: "Royal Blue",
+                price: "$329.99",
+                description: "A royal blue watch that stands out with its vibrant color.",
+                images: ["./images/watch13.jpg"]
+            },
+            watch14: {
+                title: "Bronze Heritage",
+                price: "$359.99",
+                description: "A watch with a bronze finish that embodies heritage and style.",
+                images: ["./images/watch14.jpg"]
+            },
+            watch15: {
+                title: "Timeless Collection",
+                price: "$479.99",
+                description: "A part of our timeless collection, perfect for every occasion.",
+                images: ["./images/watch15.jpg"]
+            }
+        };
+    
+        // Retrieve product ID from URL
+        const params = new URLSearchParams(window.location.search);
+        const productId = params.get('id');
+    
+        // Load Product Data
+        if (productId && products[productId]) {
+            const product = products[productId];
+            document.getElementById('productTitle').innerText = product.title;
+            document.getElementById('productPrice').innerText = product.price;
+            document.getElementById('productDescription').innerText = product.description;
+            document.getElementById('mainImage').src = product.images[0];
+    
+            // Thumbnails
+            const thumbnails = document.getElementById('thumbnails');
+            product.images.forEach(image => {
+                const img = document.createElement('img');
+                img.src = image;
+                img.onclick = () => document.getElementById('mainImage').src = image;
+                thumbnails.appendChild(img);
+            });
+
+            // Add to Cart button functionality
+            document.getElementById('addToCartBtn').onclick = function() {
+                addToCart(productId);
+            };
+        } else {
+            // If product ID not found, show error or default message
+            document.querySelector('.product-details .container').innerHTML = "<p>Product not found.</p>";
+        }
+
+        // Function to handle adding to cart
+        function addToCart(productId) {
+            // Get current cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || {};
+            
+            // Check if the product already exists in the cart
+            if (cart[productId]) {
+                cart[productId].quantity += 1; // Increment quantity
+            } else {
+                cart[productId] = {
+                    title: products[productId].title,
+                    price: products[productId].price,
+                    quantity: 1,
+                    image: products[productId].images[0]
+                };
+            }
+
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Optionally, alert the user or update UI
+            alert(`${products[productId].title} has been added to your cart!`);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Watch Store</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .cart-item {
+            border-bottom: 1px solid #ccc;
+            padding: 20px 0;
+        }
+        .total {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">Watch Store</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="product.html">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cart.html">Cart</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="checkout.html">Checkout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Checkout</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Your Cart Items</h4>
+                <div id="checkout-items">
+                    <!-- Cart items will be dynamically added here -->
+                </div>
+
+                <div class="total text-right">
+                    <p>Total: $<span id="totalPrice">0.00</span></p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Billing Information</h4>
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" required>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">Place Order</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to load cart from localStorage and display it on checkout page
+        function loadCartForCheckout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || {};
+            const checkoutItemsContainer = document.getElementById('checkout-items');
+            let total = 0;
+
+            // Clear previous items
+            checkoutItemsContainer.innerHTML = '';
+
+            // Add each item to the checkout display
+            for (const productId in cart) {
+                const item = cart[productId];
+                const itemTotal = parseFloat(item.price.replace('$', '')) * item.quantity;
+                total += itemTotal;
+
+                checkoutItemsContainer.innerHTML += `
+                    <div class="cart-item d-flex justify-content-between">
+                        <div>
+                            <h5>${item.title}</h5>
+                            <p>Price: ${item.price}</p>
+                            <p>Quantity: ${item.quantity}</p>
+                        </div>
+                        <div>
+                            <p>Total: $${itemTotal.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Update total price
+            document.getElementById('totalPrice').innerText = total.toFixed(2);
+        }
+
+        // Handle form submission
+        document.getElementById('checkoutForm').onsubmit = function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            // Simulate sending receipt via email
+            alert(`Order placed successfully!\n\nName: ${name}\nEmail: ${email}\nAddress: ${address}\n\nA receipt will be sent to your email.`);
+
+            // Clear the cart
+            localStorage.removeItem('cart');
+            loadCartForCheckout(); // Refresh cart display
+        };
+
+        // Load cart when the page loads
+        window.onload = loadCartForCheckout;
+    </script>
+</body>
+</html>

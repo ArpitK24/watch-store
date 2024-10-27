@@ -1,0 +1,182 @@
+/* Custom Styles */
+.header .logo h1 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    font-size: 28px;
+  }
+  
+  .hero {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .hero .badge {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+  
+  .hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+  }
+  
+  .hero p {
+    color: #555;
+    font-size: 18px;
+  }
+  
+  .hero-btn {
+    padding: 10px 30px;
+    font-size: 18px;
+  }
+  
+  .icon {
+    color: #333;
+    font-size: 24px;
+  }
+  
+  .nav-link:hover {
+    color: #007bff;
+  }
+  
+  .hero-slide {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.testimonial-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 15px; /* Rounded corners */
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+}
+
+.card-text {
+    font-size: 1.2rem; /* Increase font size for the testimonial text */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonial-card {
+        margin-bottom: 20px; /* Add margin between cards on smaller screens */
+    }
+}
+
+/* Animation for card appearance */
+.card {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly lower */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition effect */
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0); /* Move to original position */
+}
+
+/* Optional: Hover effect */
+.card:hover {
+    transform: scale(1.05); /* Slightly scale up on hover */
+    transition: transform 0.3s ease; /* Transition effect */
+}
+
+/* Style for the FAQ Section */
+.faqs .card {
+    border: 1px solid #007bff; /* Add a border color */
+}
+
+.faqs .card-header {
+    background-color: #f8f9fa; /* Light background for headers */
+}
+
+.faqs .btn-link {
+    color: #007bff; /* Color for links */
+    font-size: 1.1em; /* Slightly larger font size */
+    text-decoration: none; /* Remove underline */
+}
+
+.faqs .btn-link:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Animation for accordion */
+.collapse {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+/* Style for the Newsletter Section */
+.newsletter {
+    background-color: #f8f9fa; /* Light background color */
+    border-top: 2px solid #007bff; /* Top border to add definition */
+}
+
+.newsletter h2 {
+    font-size: 2rem; /* Larger font for the heading */
+    color: #007bff; /* Primary color for the heading */
+}
+
+.newsletter p {
+    font-size: 1.1rem; /* Slightly larger font for paragraph */
+    color: #333; /* Dark text color for better readability */
+}
+
+.input-group {
+    max-width: 500px; /* Limit input group width */
+    margin: auto; /* Center the input group */
+}
+
+.input-group .form-control {
+    border: 1px solid #007bff; /* Border color to match the theme */
+    border-right: none; /* Remove right border */
+}
+
+.input-group .btn {
+    border-radius: 0; /* Remove border radius for a flat look */
+}
+
+/* Button hover effects */
+.input-group .btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+/* Style for the Contact Us Section */
+.contact-us {
+    background-color: #f8f9fa; /* Light background color */
+    border-top: 2px solid #007bff; /* Top border to add definition */
+}
+
+.contact-us h2 {
+    font-size: 2rem; /* Larger font for the heading */
+    color: #007bff; /* Primary color for the heading */
+}
+
+.contact-us p {
+    font-size: 1.1rem; /* Slightly larger font for paragraph */
+    color: #333; /* Dark text color for better readability */
+}
+
+.input-group {
+    margin-bottom: 1rem; /* Spacing between input fields */
+}
+
+.input-group .input-group-text {
+    background-color: #007bff; /* Match with the theme */
+    color: white; /* White text for better contrast */
+}
+
+.input-group input,
+.input-group textarea {
+    border: 1px solid #007bff; /* Border color to match the theme */
+}
+
+/* Button style */
+.btn-block {
+    margin-top: 1rem; /* Margin above the button */
+}
